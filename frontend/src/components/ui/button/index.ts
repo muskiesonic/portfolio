@@ -1,4 +1,4 @@
-import { Button } from './button';
-import { buttonVariants } from './buttonVariants';
+import { Button } from './Button';
+import { buttonVariants } from './ButtonVariants';
 
 export { Button, buttonVariants };

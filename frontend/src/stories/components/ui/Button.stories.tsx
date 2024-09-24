@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 const meta = {
-    title: 'Components/Button',
+    title: 'Elements/Button',
     component: Button,
     parameters: {
         layout: 'centered'
     },
-    tags: ['autodocs'],
     argTypes: {
         variant: { control: 'select', options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'] },
         size: { control: 'select', options: ['default', 'icon', 'lg', 'sm'] }
