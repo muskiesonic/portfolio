@@ -50,6 +50,10 @@ export default {
                     4: 'hsl(var(--chart-4))',
                     5: 'hsl(var(--chart-5))'
                 }
+            },
+            fontSize: {
+                '48-96': 'var(--fluid-48-96)',
+                '24-40': 'var(--fluid-24-40)'
             }
         }
     },

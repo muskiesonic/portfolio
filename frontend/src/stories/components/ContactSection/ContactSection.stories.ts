@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ContactForm } from '@/components/ContactForm';
+import { ContactSection } from '@/components/ContactSection/ContactSection';
 
 const meta = {
-    title: 'Components/ContactForm',
-    component: ContactForm,
+    title: 'ContactSection/ContactSection',
+    component: ContactSection,
     parameters: {
         layout: 'padded'
     }
-} satisfies Meta<typeof ContactForm>;
+} satisfies Meta<typeof ContactSection>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

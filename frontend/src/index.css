@@ -29,6 +29,11 @@
         --chart-4: 43 74% 66%;
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
+
+        /* Fluid sizing */
+
+        --fluid-48-96: clamp(48px, 31.3043px + 5.2174vw, 96px);
+        --fluid-24-40: clamp(24px, 18.4348px + 1.7391vw, 40px);
     }
     .dark {
         --background: 224 71.4% 4.1%;
