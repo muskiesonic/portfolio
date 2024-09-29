@@ -15,6 +15,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        previewLabel: 'Markdown Preview'
+        previewLabel: 'Markdown Preview',
+        editorContent: '',
+        setEditorContent: () => {},
+        setPreviewContent: () => {}
     }
 };
