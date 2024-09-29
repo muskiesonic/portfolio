@@ -1,51 +1,16 @@
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/Form';
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
 import { MarkdownEditor } from '../ui/MarkdownEditor';
-import { useEffect, useState } from 'react';
-import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
-
-const contactFormSchema = z.object({
-    name: z.string().min(3),
-    email: z.string().email(),
-    message: z.string().min(3)
-});
+import { useContactForm } from './hooks/useContactForm';
 
 export interface ContactFormProps {
     className?: string;
 }
 
 function ContactForm({ className }: ContactFormProps) {
-    const [message, setMessage] = useState<string>('');
-
-    const form = useForm<z.infer<typeof contactFormSchema>>({
-        resolver: zodResolver(contactFormSchema),
-        defaultValues: {
-            name: '',
-            email: '',
-            message: ''
-        }
-    });
-
-    useEffect(() => {
-        form.setValue('message', message);
-    }, [message, form]);
-
-    function onMessageChange(message: string | undefined) {
-        setMessage(message || '');
-    }
-
-    function onSubmit(values: z.infer<typeof contactFormSchema>) {
-        console.log(values);
-        toast({
-            title: 'Success!',
-            description: 'Email successfully sent.'
-        });
-    }
+    const { form, onSubmit, editorContent, setEditorContent, setPreviewContent } = useContactForm();
 
     return (
         <div className={cn(className)}>
@@ -86,7 +51,9 @@ function ContactForm({ className }: ContactFormProps) {
                                 <FormControl>
                                     <MarkdownEditor
                                         previewLabel="Email Preview"
-                                        onEditorChange={onMessageChange}
+                                        editorContent={editorContent}
+                                        setEditorContent={setEditorContent}
+                                        setPreviewContent={setPreviewContent}
                                         {...field}
                                     />
                                 </FormControl>
@@ -94,7 +61,13 @@ function ContactForm({ className }: ContactFormProps) {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Send Message</Button>
+                    <Button type="submit">
+                        {form.formState.isSubmitting ? (
+                            <div className="h-8 w-8 animate-spin rounded-full border-4 border-muted-foreground border-t-violet-600" />
+                        ) : (
+                            'Send Message'
+                        )}
+                    </Button>
                 </form>
             </Form>
         </div>

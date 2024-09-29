@@ -1,21 +1,23 @@
 import { cn } from '@/lib/utils';
 import { Editor } from '@monaco-editor/react';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface TextEditorProps {
     className?: string;
-    onContentChange: (value: string) => void;
+    content: string;
+    setContent: Dispatch<SetStateAction<string>>;
     language: string;
     theme: string;
 }
 
-function TextEditor({ className, onContentChange, language, theme = 'vs-dark' }: TextEditorProps) {
+function TextEditor({ className, content, setContent, language, theme = 'vs-dark' }: TextEditorProps) {
     function handleEditorChange(value: string | undefined): void {
-        onContentChange(value || '');
+        setContent(value || '');
     }
 
     return (
         <div className={cn(className)}>
-            <Editor defaultLanguage={language} theme={theme} onChange={handleEditorChange} />
+            <Editor defaultLanguage={language} theme={theme} onChange={handleEditorChange} value={content} />
         </div>
     );
 }

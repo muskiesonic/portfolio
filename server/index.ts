@@ -1,12 +1,12 @@
 import express, { type Request, type Response } from 'express';
+import { emailRoute } from './routes/email';
 
 const app = express();
+app.use(express.json());
 
 const PORT = 3000;
 
-app.get('/api', (request: Request, response: Response) => {
-    response.status(200).send('Hello World');
-});
+app.use('/api/email', emailRoute);
 
 app.use(express.static('./frontend/dist'));
 
