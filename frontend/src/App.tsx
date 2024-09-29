@@ -1,5 +1,5 @@
 import { Toaster } from './components/ui/Toaster';
-import { ContactSection } from './components/ContactSection/ContactSection';
+import { ContactSection } from './components/ContactSection';
 
 function App() {
     return (
