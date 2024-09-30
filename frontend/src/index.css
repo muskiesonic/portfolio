@@ -36,7 +36,7 @@
         --fluid-24-40: clamp(24px, 18.4348px + 1.7391vw, 40px);
     }
     .dark {
-        --background: 224 71.4% 4.1%;
+        --background: 168 63% 1%;
         --foreground: 210 20% 98%;
         --card: 224 71.4% 4.1%;
         --card-foreground: 210 20% 98%;
